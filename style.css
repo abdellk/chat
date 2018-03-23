@@ -1,0 +1,19 @@
+.user {
+	text-align: right;
+	color: blue;
+}
+
+.messageU {
+	text-align: right;
+	color: black;
+}
+
+.invite {
+	text-align: left;
+	color: red;
+}
+
+.messageI {
+	text-align: left;
+	color: black;
+}

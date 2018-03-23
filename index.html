@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Socket.io</title>
+    </head>
+    <body>
+        <h2> Chat Socket </h2>
+         <table id="chat">
+         </table> 
+       
+        <script src="socket.io.js"></script>
+        <script>
+            var socket = io.connect('http://10.94.73.3:3003/');
+           
+            socket.on('server', function(data){
+              console.log(data);
+              if (data.from != null && data.from == "Dop" ){
+              var user = document.createElement('p')
+              document.body.appendChild (user);
+              user.className = 'user';
+              user.innerText = data.from;
+              console.log(user);
+
+              var messageU = document.createElement('p')
+              document.body.appendChild(messageU);
+              messageU.className = 'messageU';
+              messageU.innerText = data.msg;
+              console.log(messageU);
+                }
+                else if (data.from != null && data.from != "Dop"){
+              var invite = document.createElement('p');
+              document.body.appendChild(invite);             
+              invite.className = 'invite';
+              invite.innerText = data.from;
+              console.log(invite);
+
+              var messageI = document.createElement('p')
+              document.body.appendChild(messageI);
+              messageI.className = 'messageI'; 
+              messageI.innerText = data.msg;
+              console.log(messageI);
+                }
+            });
+
+            socket.emit('client', "Dop", "ahbon");
+
+            
+        </script>
+
+     
+    </body>
+</html>
